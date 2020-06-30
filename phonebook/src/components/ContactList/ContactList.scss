@@ -1,0 +1,17 @@
+@import "~bootstrap/scss/bootstrap";
+
+.contact-list {
+    text-align: start;
+    width: 80%;
+    background-color: #d8e7ee;
+
+    &__item {
+        display: flex !important;
+        justify-content: space-between;
+        padding: 0;
+    }
+
+    &__text {
+        margin: 0;
+    }
+}

@@ -1,0 +1,17 @@
+@import "~bootstrap/scss/bootstrap";
+
+.form {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+
+    &__item {
+        width: 250px;
+        margin-bottom: 25px;
+    }
+
+    &__submit {
+        width: 250px;
+    }
+}
