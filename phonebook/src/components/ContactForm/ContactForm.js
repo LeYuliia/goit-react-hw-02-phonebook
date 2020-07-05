@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { v4 as uuidv4 } from "uuid";
-//Styles:
+
 import "./ContactForm.scss";
 import { Button, Form, Col, Row } from "react-bootstrap";
 
@@ -10,10 +10,10 @@ class ContactForm extends Component {
     number: "",
   };
 
-  //Переменные
+
   nameInputId = uuidv4();
   phoneInputId = uuidv4();
-  // Функции событий
+ 
   handleChange = ({target:{name,value}}) => {
     this.setState({ [name]: value });
   };
