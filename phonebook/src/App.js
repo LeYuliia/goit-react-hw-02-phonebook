@@ -17,7 +17,7 @@ class App extends Component {
     filter: "",
   };
 
-  //Функции
+
   addContact = ({ name, number }) => {
     const contact = {
       name,
@@ -27,7 +27,7 @@ class App extends Component {
     const { contacts } = this.state;
     const findName = contacts.find((cnt) => cnt.name === name);
     const findNumber = contacts.find((cnt) => cnt.number === number);
-    // Проверка на заполненость всех полей формы:
+   
     if (name.length === 0 || number.length === 0) {
       alert("Please,  fill in all fields");
       // Пpоверка на наличие добавляемого контакта в существующем списке:
