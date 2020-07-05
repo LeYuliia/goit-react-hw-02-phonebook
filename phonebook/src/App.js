@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-// Компоненты:
+
 import ContactForm from "./components/ContactForm";
 import ContactList from "./components/ContactList";
 import Filter from "./components/Filter";
-// ID Generetor:
+
 import { v4 as uuidv4 } from "uuid";
 
 import { ToastContainer, toast } from 'react-toastify';
@@ -29,7 +29,7 @@ class App extends Component {
     const findName = contacts.find((cnt) => cnt.name === name);
     const findNumber = contacts.find((cnt) => cnt.number === number);
 <<<<<<< HEAD
-    // Проверка на заполненость всех полей формы:
+    
     if (!name || !number) {
       toast.warn("Please,  fill in all fields", {
         position: "top-right",
@@ -40,13 +40,13 @@ class App extends Component {
     if (name.length === 0 || number.length === 0) {
       alert("Please,  fill in all fields");
 >>>>>>> a52ec3fbb4c3872ff33d8c032c3fbc1931cf72df
-      // Пpоверка на наличие добавляемого контакта в существующем списке:
+    
     } else if (findName || findNumber) {
       toast.info(`Contact with name ${name} or phone number ${number} is already on your list`, {
         position: "top-center",
         autoClose: 5000,
         });
-      // Добавление контакта в список:
+      
       } else {
       this.setState(({ contacts }) => ({
         contacts: [contact, ...contacts],
