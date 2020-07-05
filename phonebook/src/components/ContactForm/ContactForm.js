@@ -14,8 +14,8 @@ class ContactForm extends Component {
   nameInputId = uuidv4();
   phoneInputId = uuidv4();
   // Функции событий
-  handleChange = (event) => {
-    this.setState({ [event.currentTarget.name]: event.currentTarget.value });
+  handleChange = ({target:{name,value}}) => {
+    this.setState({ [name]: value });
   };
 
   handleSubmit = (event) => {
@@ -32,6 +32,7 @@ class ContactForm extends Component {
   };
 
   render() {
+    const {name, number} = this.state
     return (
       <Form className="form">
         <Row>
@@ -40,7 +41,7 @@ class ContactForm extends Component {
               className="form__item"
               type="text"
               name="name"
-              value={this.state.name}
+              value={name}
               id={this.nameInputId}
               onChange={this.handleChange}
               placeholder="Contact name:"
@@ -51,7 +52,7 @@ class ContactForm extends Component {
               className="form__item"
               type="phone"
               name="number"
-              value={this.state.number}
+              value={number}
               id={this.phoneInputId}
               onChange={this.handleChange}
               placeholder="Phone number:"

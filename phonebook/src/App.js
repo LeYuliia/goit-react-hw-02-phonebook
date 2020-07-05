@@ -1,23 +1,20 @@
 import React, { Component } from "react";
-
+// Компоненты:
 import ContactForm from "./components/ContactForm";
 import ContactList from "./components/ContactList";
 import Filter from "./components/Filter";
 // ID Generetor:
 import { v4 as uuidv4 } from "uuid";
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 class App extends Component {
   state = {
-    contacts: [
-      { id: "id-1", name: "Rosie Simpson", number: "459-12-56" },
-      { id: "id-2", name: "Hermione Kline", number: "443-89-12" },
-      { id: "id-3", name: "Eden Clements", number: "645-17-79" },
-      { id: "id-4", name: "Annie Copeland", number: "227-91-26" },
-    ],
+    contacts: [],
     filter: "",
   };
 
-  //Функции
   addContact = ({ name, number }) => {
     const contact = {
       name,
@@ -28,13 +25,19 @@ class App extends Component {
     const findName = contacts.find((cnt) => cnt.name === name);
     const findNumber = contacts.find((cnt) => cnt.number === number);
     // Проверка на заполненость всех полей формы:
-    if (name.length === 0 || number.length === 0) {
-      alert("Please,  fill in all fields");
+    if (!name || !number) {
+      toast.warn("Please,  fill in all fields", {
+        position: "top-right",
+        autoClose: 5000,
+        });
       // Пpоверка на наличие добавляемого контакта в существующем списке:
     } else if (findName || findNumber) {
-      alert("Contact with that name or phone number is already on your list");
+      toast.info(`Contact with name ${name} or phone number ${number} is already on your list`, {
+        position: "top-center",
+        autoClose: 5000,
+        });
       // Добавление контакта в список:
-    } else {
+      } else {
       this.setState(({ contacts }) => ({
         contacts: [contact, ...contacts],
       }));
@@ -56,11 +59,11 @@ class App extends Component {
   getVisibleContacts = () => {
     const { filter, contacts } = this.state;
     const normalizedFilter = filter.toLowerCase();
-
     return contacts.filter((contact) =>
       contact.name.toLowerCase().includes(normalizedFilter)
     );
   };
+
   render() {
     const visibleContacts = this.getVisibleContacts();
     return (
@@ -80,11 +83,10 @@ class App extends Component {
             onDeleteContact={this.deleteContact}
           />
         </section>
+        <ToastContainer />
       </>
     );
   }
 }
-
-
 
 export default App;
