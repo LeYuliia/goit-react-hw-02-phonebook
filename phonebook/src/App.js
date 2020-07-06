@@ -15,10 +15,6 @@ class App extends Component {
     filter: "",
   };
 
-<<<<<<< HEAD
-=======
-
->>>>>>> a52ec3fbb4c3872ff33d8c032c3fbc1931cf72df
   addContact = ({ name, number }) => {
     const contact = {
       name,
@@ -28,18 +24,15 @@ class App extends Component {
     const { contacts } = this.state;
     const findName = contacts.find((cnt) => cnt.name === name);
     const findNumber = contacts.find((cnt) => cnt.number === number);
-<<<<<<< HEAD
     
     if (!name || !number) {
       toast.warn("Please,  fill in all fields", {
         position: "top-right",
         autoClose: 5000,
         });
-=======
    
     if (name.length === 0 || number.length === 0) {
       alert("Please,  fill in all fields");
->>>>>>> a52ec3fbb4c3872ff33d8c032c3fbc1931cf72df
     
     } else if (findName || findNumber) {
       toast.info(`Contact with name ${name} or phone number ${number} is already on your list`, {
